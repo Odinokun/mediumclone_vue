@@ -36,6 +36,8 @@
               Sign Up
             </button>
           </form>
+          <button @click="increaseCounter">increase counter</button>
+          <div>{{ count }}</div>
         </div>
       </div>
     </div>
@@ -45,9 +47,17 @@
 <script>
 export default {
   name: 'McvRegister',
+  computed: {
+    count() {
+      return this.$store.state.count
+    },
+  },
   methods: {
     onSubmit() {
       console.log('form submitted')
+    },
+    increaseCounter() {
+      this.$store.commit('increment')
     },
   },
 }
